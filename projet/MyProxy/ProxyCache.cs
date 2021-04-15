@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace MyProxy
 {
-
     public class ProxyCache<T> where T:new()
     {
-
         protected ObjectCache cache;
         protected DateTimeOffset dt;
 
@@ -38,22 +36,19 @@ namespace MyProxy
             return (T)cache.Get(CacheItem);
         }
 
-
         public T Get(string CacheItem, double dt_seconds)
         {
             var cacheItemPolicy2 = new CacheItemPolicy
             {
                 AbsoluteExpiration = DateTimeOffset.Now.AddSeconds(dt_seconds),
-
             };
             if (cache.Get(CacheItem) == null)
             {
-                T content = new T();
+                T content = (T)Activator.CreateInstance(typeof(T), CacheItem);
                 cache.Add(CacheItem, content, cacheItemPolicy2);
                 return content;
             }
             return (T)cache.Get(CacheItem);
-
         }
 
 
@@ -66,7 +61,7 @@ namespace MyProxy
             };
             if (cache.Get(CacheItem) == null)
             {
-                T content = new T();
+                T content = (T)Activator.CreateInstance(typeof(T), CacheItem);
                 cache.Add(CacheItem, content, cacheItemPolicy2);
                 return content;
             }

@@ -45,7 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connected Services\ServiceProxy\Reference.cs">
+    <Compile Include="Connected Services\RoutingWithBikes\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -55,28 +55,34 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Connected Services\ServiceProxy\item.xsd">
+    <None Include="Connected Services\RoutingWithBikes\BasicClient.RoutingWithBikes.Station.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\RoutingWithBikes\item.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceProxy\item1.xsd">
+    <None Include="Connected Services\RoutingWithBikes\item1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceProxy\ServiceProxyImpl.wsdl" />
+    <None Include="Connected Services\RoutingWithBikes\item2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\RoutingWithBikes\RoutingWithBikesImpl.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\ServiceProxy\" />
+    <WCFMetadataStorage Include="Connected Services\RoutingWithBikes\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServiceProxy\configuration91.svcinfo" />
+    <None Include="Connected Services\RoutingWithBikes\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServiceProxy\configuration.svcinfo" />
+    <None Include="Connected Services\RoutingWithBikes\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServiceProxy\Reference.svcmap">
+    <None Include="Connected Services\RoutingWithBikes\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

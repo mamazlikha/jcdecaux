@@ -12,7 +12,10 @@ namespace MyProxy
     public interface IServiceProxy
     {
         [OperationContract]
-        string GetContacts();
+        string GetSomething();
+
+        [OperationContract]
+        string getInfoOfStaition(int id, string city);
 
     }
 
