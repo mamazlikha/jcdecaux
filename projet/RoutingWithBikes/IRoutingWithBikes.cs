@@ -17,7 +17,7 @@ namespace RoutingWithBikes
             ResponseFormat = WebMessageFormat.Json, 
             BodyStyle = WebMessageBodyStyle.Bare,
             UriTemplate = "GetStations?city={city}"),]
-        string GetStations(string city);
+        List<Station> GetStations(string city);
 
         [OperationContract]
         [WebInvoke(Method = "GET",
@@ -26,6 +26,12 @@ namespace RoutingWithBikes
             UriTemplate = "station_info?city={city}&id={id}")]
         Station GetInfoOnStation(string city, int id);
 
+        [OperationContract]
+        [WebInvoke(Method = "GET",
+            ResponseFormat = WebMessageFormat.Json,
+            BodyStyle = WebMessageBodyStyle.Bare,
+            UriTemplate = "computeRoute?addressOfStart={addressOfStart}&addressOfDest={addressOfDest}")]
+        string computeRoute(string addressOfStart, string addressOfDest);
         // TODO: ajoutez vos opérations de service ici
     }
 

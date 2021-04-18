@@ -12,11 +12,11 @@ namespace RoutingWithBikes
     [DataContract]
     public class Station
     {
-        [JsonPropertyName("number")]
-        [DataMember]
-        public long Number { get; set; }
 
-        [JsonPropertyName("contract_name")]
+        [JsonPropertyName("number")]
+        public int Number { get; set; }
+
+        [JsonPropertyName("contractName")]
         [DataMember]
         public string ContractName { get; set; }
 
@@ -40,44 +40,42 @@ namespace RoutingWithBikes
         [DataMember]
         public bool Bonus { get; set; }
 
-        [JsonPropertyName("bike_stands")]
-        [DataMember]
-        public long BikeStands { get; set; }
-
-        [JsonPropertyName("available_bike_stands")]
-        [DataMember]
-        public long AvailableBikeStands { get; set; }
-
-        [JsonPropertyName("available_bikes")]
-        [DataMember]
-        public long AvailableBikes { get; set; }
-
         [JsonPropertyName("status")]
         [DataMember]
         public string Status { get; set; }
 
-        [JsonPropertyName("last_update")]
+        [JsonPropertyName("lastUpdate")]
         [DataMember]
-        public long? LastUpdate { get; set; }
+        public DateTime? LastUpdate { get; set; }
+
+        [JsonPropertyName("connected")]
+        [DataMember]
+        public bool Connected { get; set; }
+
+        [JsonPropertyName("overflow")]
+        [DataMember]
+        public bool Overflow { get; set; }
+
+        [JsonPropertyName("shape")]
+        [DataMember]
+        public object Shape { get; set; }
+
+        [JsonPropertyName("totalStands")]
+        [DataMember]
+        public TotalStands TotalStands { get; set; }
+
+        [JsonPropertyName("mainStands")]
+        [DataMember]
+        public MainStands MainStands { get; set; }
+
+        [JsonPropertyName("overflowStands")]
+        [DataMember]
+        public object OverflowStands { get; set; }
 
         public override string ToString()
         {
-            if (LastUpdate != null)
-            {
-                return "{\"Address\":\"" + Address + "\",\"AvailableBikeStands\":" + AvailableBikeStands +
-                    ",\"AvailableBikes\":" + AvailableBikes + ",\"Banking\":" + Banking +
-                    ",\"BikeStands\":" + BikeStands + ",\"Bonus\":" + Bonus + ",\"ContractName\":\"" + ContractName +
-                    "\",\"LastUpdate\":" + LastUpdate + ",\"Name\":\"" + Name + "\",\"Number\":" + Number +
-                    ",\"Position\":" + Position.ToString() + ",\"Status\":\"" + Status + "\"}";
-            }
-            else
-            {
-                return "{\"Address\":\"" + Address + "\",\"AvailableBikeStands\":" + AvailableBikeStands +
-                    ",\"AvailableBikes\":" + AvailableBikes + ",\"Banking\":" + Banking +
-                    ",\"BikeStands\":" + BikeStands + ",\"Bonus\":" + Bonus + ",\"ContractName\":\"" + ContractName +
-                   ",\"Name\":\"" + Name + "\",\"Number\":" + Number +
-                    ",\"Position\":" + Position.ToString() + ",\"Status\":\"" + Status + "\"}";
-            }
+            return this.ContractName+", "+ this.Name + ", " + this.Number + "," + this.Address+", "+this.Position;
         }
+
     }
 }

@@ -12,13 +12,11 @@ namespace BasicClient
     class Program
     {
 
-        
-
         static void Main(string[] args)
         {
-            RoutingWithBikesClient bikes = new RoutingWithBikesClient("valence");
-            Station[] stations = bikes.GetStations();
-            Console.WriteLine(printStations(stations));
+            RoutingWithBikesClient bikes = new RoutingWithBikesClient();
+            //Station[] stations = bikes.GetStations("valence");
+            Console.WriteLine("hello==========");
             Console.ReadLine();
         }
 
@@ -29,15 +27,15 @@ namespace BasicClient
             int i;
             for (i = 0; i < stations.Length-1; i++)
             {
-                toREt += toString(stations[i]);
+                //toREt += toString(stations[i]);
                 toREt += ",";
             }
 
-            toREt += toString(stations[i]);
+            //toREt += toString(stations[i]);
             return toREt+="]";
         }
 
-
+        /*
         private static string toString(Station station)
         {
             if (station.LastUpdate != null)
@@ -56,7 +54,7 @@ namespace BasicClient
                    ",\"Name\":\"" + station.Name + "\",\"Number\":" + station.Number +
                     ",\"Position\":" + "{\"Lat\":" + station.Position.Lat.ToString() + ",\"Lng\":" + station.Position.Lng.ToString() + "}" + ",\"Status\":\"" + station.Status + "\"}";
             }
-        }
+        }*/
 
     }
 }

@@ -17,46 +17,54 @@ namespace BasicClient.RoutingWithBikes {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Station", Namespace="http://schemas.datacontract.org/2004/07/RoutingWithBikes")]
     [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(BasicClient.RoutingWithBikes.Station[]))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(BasicClient.RoutingWithBikes.MainStands))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(BasicClient.RoutingWithBikes.Availabilities))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(BasicClient.RoutingWithBikes.Position))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(BasicClient.RoutingWithBikes.TotalStands))]
     public partial class Station : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string AddressField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private long AvailableBikeStandsField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private long AvailableBikesField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool BankingField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private long BikeStandsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private bool BonusField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool ConnectedField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ContractNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<long> LastUpdateField;
+        private System.Nullable<System.DateTime> LastUpdateField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private BasicClient.RoutingWithBikes.MainStands MainStandsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private long NumberField;
+        private bool OverflowField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private object OverflowStandsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private BasicClient.RoutingWithBikes.Position PositionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private object ShapeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string StatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private BasicClient.RoutingWithBikes.TotalStands TotalStandsField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -69,45 +77,6 @@ namespace BasicClient.RoutingWithBikes {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Address {
-            get {
-                return this.AddressField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.AddressField, value) != true)) {
-                    this.AddressField = value;
-                    this.RaisePropertyChanged("Address");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public long AvailableBikeStands {
-            get {
-                return this.AvailableBikeStandsField;
-            }
-            set {
-                if ((this.AvailableBikeStandsField.Equals(value) != true)) {
-                    this.AvailableBikeStandsField = value;
-                    this.RaisePropertyChanged("AvailableBikeStands");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public long AvailableBikes {
-            get {
-                return this.AvailableBikesField;
-            }
-            set {
-                if ((this.AvailableBikesField.Equals(value) != true)) {
-                    this.AvailableBikesField = value;
-                    this.RaisePropertyChanged("AvailableBikes");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public bool Banking {
             get {
                 return this.BankingField;
@@ -116,19 +85,6 @@ namespace BasicClient.RoutingWithBikes {
                 if ((this.BankingField.Equals(value) != true)) {
                     this.BankingField = value;
                     this.RaisePropertyChanged("Banking");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public long BikeStands {
-            get {
-                return this.BikeStandsField;
-            }
-            set {
-                if ((this.BikeStandsField.Equals(value) != true)) {
-                    this.BikeStandsField = value;
-                    this.RaisePropertyChanged("BikeStands");
                 }
             }
         }
@@ -147,6 +103,19 @@ namespace BasicClient.RoutingWithBikes {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Connected {
+            get {
+                return this.ConnectedField;
+            }
+            set {
+                if ((this.ConnectedField.Equals(value) != true)) {
+                    this.ConnectedField = value;
+                    this.RaisePropertyChanged("Connected");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string ContractName {
             get {
                 return this.ContractNameField;
@@ -160,7 +129,7 @@ namespace BasicClient.RoutingWithBikes {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<long> LastUpdate {
+        public System.Nullable<System.DateTime> LastUpdate {
             get {
                 return this.LastUpdateField;
             }
@@ -168,6 +137,19 @@ namespace BasicClient.RoutingWithBikes {
                 if ((this.LastUpdateField.Equals(value) != true)) {
                     this.LastUpdateField = value;
                     this.RaisePropertyChanged("LastUpdate");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public BasicClient.RoutingWithBikes.MainStands MainStands {
+            get {
+                return this.MainStandsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MainStandsField, value) != true)) {
+                    this.MainStandsField = value;
+                    this.RaisePropertyChanged("MainStands");
                 }
             }
         }
@@ -186,14 +168,27 @@ namespace BasicClient.RoutingWithBikes {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public long Number {
+        public bool Overflow {
             get {
-                return this.NumberField;
+                return this.OverflowField;
             }
             set {
-                if ((this.NumberField.Equals(value) != true)) {
-                    this.NumberField = value;
-                    this.RaisePropertyChanged("Number");
+                if ((this.OverflowField.Equals(value) != true)) {
+                    this.OverflowField = value;
+                    this.RaisePropertyChanged("Overflow");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public object OverflowStands {
+            get {
+                return this.OverflowStandsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.OverflowStandsField, value) != true)) {
+                    this.OverflowStandsField = value;
+                    this.RaisePropertyChanged("OverflowStands");
                 }
             }
         }
@@ -212,6 +207,19 @@ namespace BasicClient.RoutingWithBikes {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public object Shape {
+            get {
+                return this.ShapeField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ShapeField, value) != true)) {
+                    this.ShapeField = value;
+                    this.RaisePropertyChanged("Shape");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Status {
             get {
                 return this.StatusField;
@@ -220,6 +228,80 @@ namespace BasicClient.RoutingWithBikes {
                 if ((object.ReferenceEquals(this.StatusField, value) != true)) {
                     this.StatusField = value;
                     this.RaisePropertyChanged("Status");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public BasicClient.RoutingWithBikes.TotalStands TotalStands {
+            get {
+                return this.TotalStandsField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TotalStandsField, value) != true)) {
+                    this.TotalStandsField = value;
+                    this.RaisePropertyChanged("TotalStands");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MainStands", Namespace="http://schemas.datacontract.org/2004/07/RoutingWithBikes")]
+    [System.SerializableAttribute()]
+    public partial class MainStands : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private BasicClient.RoutingWithBikes.Availabilities AvailabilitiesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CapacityField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public BasicClient.RoutingWithBikes.Availabilities Availabilities {
+            get {
+                return this.AvailabilitiesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AvailabilitiesField, value) != true)) {
+                    this.AvailabilitiesField = value;
+                    this.RaisePropertyChanged("Availabilities");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Capacity {
+            get {
+                return this.CapacityField;
+            }
+            set {
+                if ((this.CapacityField.Equals(value) != true)) {
+                    this.CapacityField = value;
+                    this.RaisePropertyChanged("Capacity");
                 }
             }
         }
@@ -295,6 +377,192 @@ namespace BasicClient.RoutingWithBikes {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TotalStands", Namespace="http://schemas.datacontract.org/2004/07/RoutingWithBikes")]
+    [System.SerializableAttribute()]
+    public partial class TotalStands : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private BasicClient.RoutingWithBikes.Availabilities AvailabilitiesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CapacityField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public BasicClient.RoutingWithBikes.Availabilities Availabilities {
+            get {
+                return this.AvailabilitiesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.AvailabilitiesField, value) != true)) {
+                    this.AvailabilitiesField = value;
+                    this.RaisePropertyChanged("Availabilities");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Capacity {
+            get {
+                return this.CapacityField;
+            }
+            set {
+                if ((this.CapacityField.Equals(value) != true)) {
+                    this.CapacityField = value;
+                    this.RaisePropertyChanged("Capacity");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Availabilities", Namespace="http://schemas.datacontract.org/2004/07/RoutingWithBikes")]
+    [System.SerializableAttribute()]
+    public partial class Availabilities : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int BikesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ElectricalBikesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ElectricalInternalBatteryBikesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ElectricalRemovableBatteryBikesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int MechanicalBikesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int StandsField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Bikes {
+            get {
+                return this.BikesField;
+            }
+            set {
+                if ((this.BikesField.Equals(value) != true)) {
+                    this.BikesField = value;
+                    this.RaisePropertyChanged("Bikes");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ElectricalBikes {
+            get {
+                return this.ElectricalBikesField;
+            }
+            set {
+                if ((this.ElectricalBikesField.Equals(value) != true)) {
+                    this.ElectricalBikesField = value;
+                    this.RaisePropertyChanged("ElectricalBikes");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ElectricalInternalBatteryBikes {
+            get {
+                return this.ElectricalInternalBatteryBikesField;
+            }
+            set {
+                if ((this.ElectricalInternalBatteryBikesField.Equals(value) != true)) {
+                    this.ElectricalInternalBatteryBikesField = value;
+                    this.RaisePropertyChanged("ElectricalInternalBatteryBikes");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ElectricalRemovableBatteryBikes {
+            get {
+                return this.ElectricalRemovableBatteryBikesField;
+            }
+            set {
+                if ((this.ElectricalRemovableBatteryBikesField.Equals(value) != true)) {
+                    this.ElectricalRemovableBatteryBikesField = value;
+                    this.RaisePropertyChanged("ElectricalRemovableBatteryBikes");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int MechanicalBikes {
+            get {
+                return this.MechanicalBikesField;
+            }
+            set {
+                if ((this.MechanicalBikesField.Equals(value) != true)) {
+                    this.MechanicalBikesField = value;
+                    this.RaisePropertyChanged("MechanicalBikes");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Stands {
+            get {
+                return this.StandsField;
+            }
+            set {
+                if ((this.StandsField.Equals(value) != true)) {
+                    this.StandsField = value;
+                    this.RaisePropertyChanged("Stands");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="RoutingWithBikes.IRoutingWithBikes")]
     public interface IRoutingWithBikes {
@@ -304,6 +572,18 @@ namespace BasicClient.RoutingWithBikes {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoutingWithBikes/GetStations", ReplyAction="http://tempuri.org/IRoutingWithBikes/GetStationsResponse")]
         System.Threading.Tasks.Task<BasicClient.RoutingWithBikes.Station[]> GetStationsAsync(string city);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoutingWithBikes/GetInfoOnStation", ReplyAction="http://tempuri.org/IRoutingWithBikes/GetInfoOnStationResponse")]
+        BasicClient.RoutingWithBikes.Station GetInfoOnStation(string city, int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoutingWithBikes/GetInfoOnStation", ReplyAction="http://tempuri.org/IRoutingWithBikes/GetInfoOnStationResponse")]
+        System.Threading.Tasks.Task<BasicClient.RoutingWithBikes.Station> GetInfoOnStationAsync(string city, int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoutingWithBikes/computeRoute", ReplyAction="http://tempuri.org/IRoutingWithBikes/computeRouteResponse")]
+        void computeRoute(string addressOfStart, string addressOfDest);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRoutingWithBikes/computeRoute", ReplyAction="http://tempuri.org/IRoutingWithBikes/computeRouteResponse")]
+        System.Threading.Tasks.Task computeRouteAsync(string addressOfStart, string addressOfDest);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -339,6 +619,22 @@ namespace BasicClient.RoutingWithBikes {
         
         public System.Threading.Tasks.Task<BasicClient.RoutingWithBikes.Station[]> GetStationsAsync(string city) {
             return base.Channel.GetStationsAsync(city);
+        }
+        
+        public BasicClient.RoutingWithBikes.Station GetInfoOnStation(string city, int id) {
+            return base.Channel.GetInfoOnStation(city, id);
+        }
+        
+        public System.Threading.Tasks.Task<BasicClient.RoutingWithBikes.Station> GetInfoOnStationAsync(string city, int id) {
+            return base.Channel.GetInfoOnStationAsync(city, id);
+        }
+        
+        public void computeRoute(string addressOfStart, string addressOfDest) {
+            base.Channel.computeRoute(addressOfStart, addressOfDest);
+        }
+        
+        public System.Threading.Tasks.Task computeRouteAsync(string addressOfStart, string addressOfDest) {
+            return base.Channel.computeRouteAsync(addressOfStart, addressOfDest);
         }
     }
 }

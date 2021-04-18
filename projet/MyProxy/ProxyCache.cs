@@ -66,7 +66,6 @@ namespace MyProxy
                 return content;
             }
             return (T)cache.Get(CacheItem);
-
         }
 
         public void PrintAllCache()

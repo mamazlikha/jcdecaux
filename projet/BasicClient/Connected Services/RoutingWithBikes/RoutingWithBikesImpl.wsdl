@@ -13,16 +13,54 @@
   <wsdl:message name="IRoutingWithBikes_GetStations_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetStationsResponse" />
   </wsdl:message>
+  <wsdl:message name="IRoutingWithBikes_GetInfoOnStation_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetInfoOnStation" />
+  </wsdl:message>
+  <wsdl:message name="IRoutingWithBikes_GetInfoOnStation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetInfoOnStationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRoutingWithBikes_computeRoute_InputMessage">
+    <wsdl:part name="parameters" element="tns:computeRoute" />
+  </wsdl:message>
+  <wsdl:message name="IRoutingWithBikes_computeRoute_OutputMessage">
+    <wsdl:part name="parameters" element="tns:computeRouteResponse" />
+  </wsdl:message>
   <wsdl:portType name="IRoutingWithBikes">
     <wsdl:operation name="GetStations">
       <wsdl:input wsaw:Action="http://tempuri.org/IRoutingWithBikes/GetStations" message="tns:IRoutingWithBikes_GetStations_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRoutingWithBikes/GetStationsResponse" message="tns:IRoutingWithBikes_GetStations_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetInfoOnStation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRoutingWithBikes/GetInfoOnStation" message="tns:IRoutingWithBikes_GetInfoOnStation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRoutingWithBikes/GetInfoOnStationResponse" message="tns:IRoutingWithBikes_GetInfoOnStation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="computeRoute">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRoutingWithBikes/computeRoute" message="tns:IRoutingWithBikes_computeRoute_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRoutingWithBikes/computeRouteResponse" message="tns:IRoutingWithBikes_computeRoute_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="SOAPBikeRoutingService" type="tns:IRoutingWithBikes">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="GetStations">
       <soap:operation soapAction="http://tempuri.org/IRoutingWithBikes/GetStations" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetInfoOnStation">
+      <soap:operation soapAction="http://tempuri.org/IRoutingWithBikes/GetInfoOnStation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="computeRoute">
+      <soap:operation soapAction="http://tempuri.org/IRoutingWithBikes/computeRoute" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

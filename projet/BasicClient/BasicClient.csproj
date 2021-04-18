@@ -76,6 +76,9 @@
     <WCFMetadataStorage Include="Connected Services\RoutingWithBikes\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\RoutingWithBikes\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Connected Services\RoutingWithBikes\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>

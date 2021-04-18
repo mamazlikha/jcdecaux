@@ -11,11 +11,11 @@ namespace RoutingWithBikes
     [DataContract]
     public class Position
     {
-        [JsonPropertyName("lat")]
+        [JsonPropertyName("latitude")]
         [DataMember]
         public double Lat { get; set; }
 
-        [JsonPropertyName("lng")]
+        [JsonPropertyName("longitude")]
         [DataMember]
         public double Lng { get; set; }
 

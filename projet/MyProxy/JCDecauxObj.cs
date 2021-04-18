@@ -9,8 +9,6 @@ namespace MyProxy
 {
     class JCDecauxObj
     {
-        protected ProxyCache<JCDecauxObj> cache;
-        protected static string URI = "";
         protected HttpClient req = new HttpClient();
         protected string jsonObj = "";
 
