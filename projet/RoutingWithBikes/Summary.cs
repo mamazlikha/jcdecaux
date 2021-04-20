@@ -8,17 +8,15 @@ using System.Threading.Tasks;
 
 namespace RoutingWithBikes
 {
-    public class Geometry
+    public class Summary
     {
-
-        [JsonPropertyName("coordinates")]
+        [JsonPropertyName("distance")]
         [DataMember]
-        public List<double> Coordinates { get; set; }
+        public double Distance { get; set; }
 
-        [JsonPropertyName("type")]
+        [JsonPropertyName("duration")]
         [DataMember]
-        public string Type { get; set; }
-
-        
+        public double Duration { get; set; }
     }
+
 }

@@ -10,7 +10,7 @@ namespace RoutingWithBikes
 {
     // Root myDeserializedClass = JsonSerializer.Deserialize<RoutingWithBikes>(myJsonResponse);
     
-    public class OpenRouteServiceObj
+    public class OpenRouteServiceObjForTxt
     {
         [JsonPropertyName("geocoding")]
         [DataMember]

@@ -8,17 +8,19 @@ using System.Threading.Tasks;
 
 namespace RoutingWithBikes
 {
-    public class Geometry
+    public class QueryForPath
     {
-
         [JsonPropertyName("coordinates")]
         [DataMember]
-        public List<double> Coordinates { get; set; }
+        public List<List<double>> Coordinates { get; set; }
 
-        [JsonPropertyName("type")]
+        [JsonPropertyName("profile")]
         [DataMember]
-        public string Type { get; set; }
+        public string Profile { get; set; }
 
-        
+        [JsonPropertyName("format")]
+        [DataMember]
+        public string Format { get; set; }
     }
+
 }

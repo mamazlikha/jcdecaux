@@ -1,6 +1,6 @@
 // This variable will contain the list of the stations of the chosen contract.
 var stations = [];
-
+var lat1 = 0, lng1 = 0, lat2 = 0, lng2 = 0;
 function callAPI(url, requestType, params, finishHandler) {
     var fullUrl = url;
 
@@ -14,9 +14,9 @@ function callAPI(url, requestType, params, finishHandler) {
     var caller = new XMLHttpRequest();
     caller.open(requestType, fullUrl, true);
     // The header set below limits the elements we are OK to retrieve from the server.
-    caller.setRequestHeader ("Accept", "application/json");
+    caller.setRequestHeader("Accept", "application/json");
     // onload shall contain the function that will be called when the call is finished.
-    caller.onload=finishHandler;
+    caller.onload = finishHandler;
 
     caller.send();
 }
@@ -51,20 +51,52 @@ function retrieveContractStations() {
 // This function is called when a XML call is finished. In this context, "this" refers to the API response.
 function feedContractList() {
     // First of all, check that the call went through OK:
+    var j = { 0: "0", 1: "0" };
+
     if (this.status !== 200) {
         console.log("Contracts not retrieved. Check the error in the Network or Console tab.");
     } else {
-        // The result is contained in "this.responseText". First step: transform it into a js object.
-        var responseObject = JSON.parse(this.responseText);
-        // Second step: extract the contract names from the list.
-        var contracts = responseObject.map(function(contract) {
-            return contract.name;
-        });
-        // Third step: fill the datalist in the html.
-        var listContainer = document.getElementById("contractsList");
-        // Empty the list in case it had already been filled.
-        listContainer.innerHTML = "";
-        for (var i=0; i<contracts.length; i++) {
+        var obj = JSON.parse(this.responseText).Features;
+        var mymap = L.map('mapid').setView([48, 2], 4);
+       
+        L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+            maxZoom: 18,
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, ' +
+                'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            id: 'mapbox/streets-v11',
+            tileSize: 512,
+            zoomOffset: -1
+        }).addTo(mymap);
+
+        console.log(obj);
+        L.geoJSON(obj).addTo(mymap);
+
+        /*var marker1 = L.marker([lat1, lng1]).addTo(mymap)
+        .bindPopup("<b>start</b><br />").openPopup();
+        var marker2 = L.marker([lat2, lng2]).addTo(mymap)
+        .bindPopup("<b>destination</b><br />").openPopup();
+
+        
+        var latlngs = Array();
+
+        //Get latlng from first marker
+        latlngs.push(marker1.getLatLng());
+        
+        //Get latlng from first marker
+        latlngs.push(marker2.getLatLng());
+        
+        //You can just keep adding markers
+        
+        //From documentation http://leafletjs.com/reference.html#polyline
+        // create a red polyline from an arrays of LatLng points
+        var path = L.polyline.antPath(latlngs, {color: 'red'}).addTo(mymap);
+        
+        // zoom the mymap to the polyline
+        mymap.fitBounds(path.getBounds())
+
+
+
+        /*for (var i=0; i<contracts.length; i++) {
             var currentContract = contracts[i];
             // Create a <option> tag that will contain the contract value.
             var option = document.createElement("option");
@@ -72,10 +104,13 @@ function feedContractList() {
             option.setAttribute("value", currentContract);
             // When the <option> is complete, add it to the list.
             listContainer.appendChild(option);
-        }
+        }*/
 
-        // When the list is filled, display the Step 2:
-        document.getElementById("step2").style.display = "block";
+        // When the list is filled, display the Step 4:
+        document.getElementById("mapid").style.display = "block";
+
+
+
     }
 }
 
@@ -100,8 +135,34 @@ function getApiKey() {
 }
 
 function getClosestStation() {
-    var latitude = document.getElementById("latitude").value;
-    var longitude = document.getElementById("longitude").value;
+
+    var addressOfStart = document.getElementById("addOfStart").value;
+    var addressOfDest = document.getElementById("addOfDest").value;
+
+
+    var parsed_addressOfStart = addressOfStart.replaceAll(" ", "%20");
+    var parsed_addressOfDest = addressOfDest.replaceAll(" ", "%20");
+
+    var uri = "http://localhost:8733/Design_Time_Addresses/RoutingWithBikes/RESTBikeRoutingService/computeRoute?addressOfStart=" + parsed_addressOfStart + "&addressOfDest=" + parsed_addressOfDest;
+
+    var caller = new XMLHttpRequest();
+
+    caller.open('GET', uri, true);
+    // The header set below limits the elements we are OK to retrieve from the server.
+    caller.setRequestHeader("Accept", "application/json");
+    // onload shall contain the function that will be called when the call is finished.
+    caller.onload = feedContractList;
+
+    caller.send();
+
+
+
+    document.getElementById("closestStation").innerHTML = returned;
+    // Then let's display the final Step:
+    document.getElementById("step4").style.display = "block";
+
+    /*
+    
 
     var currentMinDistance = -1;
     var currentMinDistanceStation = null;
@@ -117,24 +178,32 @@ function getClosestStation() {
 
     document.getElementById("closestStation").innerHTML = currentMinDistanceStation;
     // Then let's display the final Step:
-    document.getElementById("step4").style.display = "block";
+    document.getElementById("step4").style.display = "block";*/
 }
+function returnedValue() {
+    // Let's parse the response:
+    var value = JSON.parse(this.responseText);
+
+
+    console.log(value);
+}
+
 
 function getDistanceFrom2GpsCoordinates(lat1, lon1, lat2, lon2) {
     // Radius of the earth in km
     var earthRadius = 6371;
-    var dLat = deg2rad(lat2-lat1);
-    var dLon = deg2rad(lon2-lon1);
+    var dLat = deg2rad(lat2 - lat1);
+    var dLon = deg2rad(lon2 - lon1);
     var a =
-        Math.sin(dLat/2) * Math.sin(dLat/2) +
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
         Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
-        Math.sin(dLon/2) * Math.sin(dLon/2)
-    ;
-    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        Math.sin(dLon / 2) * Math.sin(dLon / 2)
+        ;
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     var d = earthRadius * c; // Distance in km
     return d;
 }
 
 function deg2rad(deg) {
-    return deg * (Math.PI/180)
+    return deg * (Math.PI / 180)
 }

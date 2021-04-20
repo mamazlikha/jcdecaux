@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'light-web-client';
+
+
+  public AppComponent(){
+
+  }
 }

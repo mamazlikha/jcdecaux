@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.ServiceModel.Web;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -21,15 +22,17 @@ namespace RoutingWithBikes
         protected List<Station> stations = new List<Station>();
         public RoutingWithBikesImpl()
         {
-            this .stations = GetStations(null);
+            this.stations = GetStations(null);
         }
         public RoutingWithBikesImpl(string city)
         {
             this.city = city;
         }
 
-        public string computeRoute(string addressOfStart, string addressOfDest)
+        public OpenRouteServiceApiForPath computeRoute(string addressOfStart, string addressOfDest)
         {
+            WebOperationContext.Current.OutgoingResponse.Headers.Add("Access-Control-Allow-Origin", "*");
+
             bool isAddOfStart = true;
             
             string parsed_addressOfStart = addressOfStart.Replace(" ", "%20");
@@ -43,23 +46,21 @@ namespace RoutingWithBikes
             
             string responseBody = resp.Result.Content.ReadAsStringAsync().Result.ToString();
             
-            OpenRouteServiceObj obj = JsonSerializer.Deserialize<OpenRouteServiceObj>(responseBody);
+            OpenRouteServiceObjForTxt obj = JsonSerializer.Deserialize<OpenRouteServiceObjForTxt>(responseBody);
             
-            double latOfStart, lngOfStart, latOfDest, lngOfDest;
+            double latOfStart, lngOfStart, latOfDest, lngOfDest;    
             lngOfStart = obj.Features[0].Geometry.Coordinates[0];
             latOfStart = obj.Features[0].Geometry.Coordinates[1];
             System.Diagnostics.Debug.WriteLine("======= lngOfStart = " + lngOfStart);
             System.Diagnostics.Debug.WriteLine("======= latOfStart = " + latOfStart);
             GeoCoordinate geoLocationOfAddressOfStart = new GeoCoordinate(latOfStart, lngOfStart);
 
-
             Station closestStationToAddressOfStart =
                 computeClosestStationToAddress(geoLocationOfAddressOfStart, stations, isAddOfStart);
 
-
             resp = ht.GetAsync(uriOfDes);
             responseBody = resp.Result.Content.ReadAsStringAsync().Result.ToString();
-            obj = JsonSerializer.Deserialize<OpenRouteServiceObj>(responseBody);
+            obj = JsonSerializer.Deserialize<OpenRouteServiceObjForTxt>(responseBody);
             
             lngOfDest = obj.Features[0].Geometry.Coordinates[0];
             latOfDest = obj.Features[0].Geometry.Coordinates[1];
@@ -71,16 +72,25 @@ namespace RoutingWithBikes
 
             Station closestStationToAddressOfDest =
                 computeClosestStationToAddress(geoLocationOfAddressOfDest, stations,!isAddOfStart);
-
             if (closestStationToAddressOfDest != null && closestStationToAddressOfStart != null)
             {
+                string uriAll = "https://api.openrouteservice.org/v2/directions/foot-walking?api_key=5b3ce3597851110001cf62483cf85a66475a41ac904d47754e418791&start=" + closestStationToAddressOfStart.Position.Lng.ToString().Replace(",", ".") + "," + closestStationToAddressOfStart.Position.Lat.ToString().Replace(",", ".") +
+                "&end="+closestStationToAddressOfDest.Position.Lng.ToString().Replace(",",".")+","+closestStationToAddressOfDest.Position.Lat.ToString().Replace(",", ".");
 
-                System.Diagnostics.Debug.WriteLine("start = " + closestStationToAddressOfStart.ToString() + " dest = " + closestStationToAddressOfDest.ToString());
-                //System.Diagnostics.Debug.WriteLine("stations[0].Position.Lat = " + stations[0].Position.Lat + " stations[0].Position.Lng = " + stations[0].Position.Lng);
-                return "start = " + closestStationToAddressOfStart.Name + " dest = " + closestStationToAddressOfDest.Name;
+                resp = ht.GetAsync(uriAll);
+
+                responseBody = resp.Result.Content.ReadAsStringAsync().Result.ToString();
+
+                /*Position[] positions = new Position[2];
+                positions[0] = closestStationToAddressOfStart.Position;
+                positions[1] = closestStationToAddressOfDest.Position;
+                */
+                return JsonSerializer.Deserialize<OpenRouteServiceApiForPath>(responseBody) ;
+
+                 //return "value : {"+closestStationToAddressOfStart.Position.ToString() + " , " + closestStationToAddressOfDest.Position.ToString()+"}";
 
             }
-            else return stations.Count.ToString();
+            else return null;
 
         }
 
@@ -93,7 +103,6 @@ namespace RoutingWithBikes
 
         public List<Station> GetStations(string city)
         {
-            
 
             string uri = "https://api.jcdecaux.com/vls/v3/stations?apiKey=c9c6ff3f25cb517f16421e2c4d191fe0a70ebbfe";
             
@@ -103,7 +112,6 @@ namespace RoutingWithBikes
 
             return JsonSerializer.Deserialize<List<Station>>(responseBody);
             
-
         }
 
         private Station computeClosestStationToAddress(GeoCoordinate coordinate,List<Station> stations, bool isAddOfStart)
@@ -111,6 +119,7 @@ namespace RoutingWithBikes
             if (stations  == null) throw NullReferenceException();
             System.Diagnostics.Debug.WriteLine("coordinate.Latitude = " + coordinate.Latitude);
             System.Diagnostics.Debug.WriteLine("coordinate.Longitude = " + coordinate.Longitude);
+
             stations.Sort(delegate (Station x, Station y)
             {
                 GeoCoordinate coordinateX = new GeoCoordinate(x.Position.Lat, x.Position.Lng);
@@ -120,10 +129,6 @@ namespace RoutingWithBikes
                     );
             });
 
-            for(int i = 0; i < stations.Count; i++)
-            {
-                System.Diagnostics.Debug.WriteLine(stations[i].ToString());
-            }
 
             if (isAddOfStart)
             {
