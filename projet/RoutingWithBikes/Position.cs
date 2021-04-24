@@ -11,6 +11,13 @@ namespace RoutingWithBikes
     [DataContract]
     public class Position
     {
+
+        public Position(double lat, double lng)
+        {
+            Lat = lat;
+            Lng = lng;
+        }
+
         [JsonPropertyName("latitude")]
         [DataMember]
         public double Lat { get; set; }
@@ -21,7 +28,7 @@ namespace RoutingWithBikes
 
         public override string ToString()
         {
-            return "{\"Lat\":"+Lat+",\"Lng\":"+Lng+"}";
+            return "{\"Lat\":"+Lat.ToString().Replace(",",".")+",\"Lng\":"+Lng.ToString().Replace(",", ".") + "}";
         }
     }
 }

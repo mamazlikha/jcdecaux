@@ -31,7 +31,7 @@ namespace RoutingWithBikes
             ResponseFormat = WebMessageFormat.Json,
             BodyStyle = WebMessageBodyStyle.Bare,
             UriTemplate = "computeRoute?addressOfStart={addressOfStart}&addressOfDest={addressOfDest}")]
-        OpenRouteServiceApiForPath computeRoute(string addressOfStart, string addressOfDest);
+        SerialisedObject computeRoute(string addressOfStart, string addressOfDest);
         // TODO: ajoutez vos opérations de service ici
     }
 

@@ -26,5 +26,8 @@ namespace RoutingWithBikes
         [JsonPropertyName("metadata")]
         [DataMember]
         public Metadata Metadata { get; set; }
+
+
+        
     }
 }

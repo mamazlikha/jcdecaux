@@ -108,6 +108,7 @@
     <Compile Include="QueryForPath.cs" />
     <Compile Include="RoutingWithBikesImpl.cs" />
     <Compile Include="Segment.cs" />
+    <Compile Include="SerialisedObject.cs" />
     <Compile Include="Station.cs" />
     <Compile Include="Step.cs" />
     <Compile Include="Summary.cs" />

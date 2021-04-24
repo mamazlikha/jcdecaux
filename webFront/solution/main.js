@@ -1,6 +1,6 @@
 // This variable will contain the list of the stations of the chosen contract.
 var stations = [];
-var lat1 = 0, lng1 = 0, lat2 = 0, lng2 = 0;
+var lat1 = 0, lng1 = 0, lat2 = 0, lng2 = 0, lat3 = 0, lng3 = 0, lat4 = 0, lng4 = 0;
 function callAPI(url, requestType, params, finishHandler) {
     var fullUrl = url;
 
@@ -56,8 +56,14 @@ function feedContractList() {
     if (this.status !== 200) {
         console.log("Contracts not retrieved. Check the error in the Network or Console tab.");
     } else {
-        var obj = JSON.parse(this.responseText).Features;
-        var mymap = L.map('mapid').setView([48, 2], 4);
+        var parsed_list = JSON.parse(this.responseText);
+        var path1 = parsed_list.AllPath[0].Features;
+        var path2 = parsed_list.AllPath[1].Features;
+        var path3 = parsed_list.AllPath[2].Features;
+        var postions = parsed_list.positions;
+        
+
+        var mymap = L.map('mapid').setView([48, 2], 7);
        
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
             maxZoom: 18,
@@ -68,15 +74,40 @@ function feedContractList() {
             zoomOffset: -1
         }).addTo(mymap);
 
-        console.log(obj);
-        L.geoJSON(obj).addTo(mymap);
+        console.log(path1);
+        L.geoJSON(path1).addTo(mymap);
 
-        /*var marker1 = L.marker([lat1, lng1]).addTo(mymap)
+        console.log(path2);
+        L.geoJSON(path2).addTo(mymap);
+
+        console.log(path3);
+        L.geoJSON(path3).addTo(mymap);
+
+        lat1 = postions[0].Lat;
+        lng1 = postions[0].Lng;
+        var marker1 = L.marker([lat1, lng1]).addTo(mymap)
         .bindPopup("<b>start</b><br />").openPopup();
+
+        lat2 = postions[1].Lat;
+        lng2 = postions[1].Lng;
+
+
         var marker2 = L.marker([lat2, lng2]).addTo(mymap)
+        .bindPopup("<b>station-start</b><br />").openPopup();
+
+        lat3= postions[2].Lat;
+        lng3 = postions[2].Lng;
+
+        var marker3 = L.marker([lat3, lng3]).addTo(mymap)
+        .bindPopup("<b>station-end</b><br />").openPopup();
+        
+        lat4= postions[3].Lat;
+        lng4 = postions[3].Lng;
+
+        var marker4 = L.marker([lat4, lng4]).addTo(mymap)
         .bindPopup("<b>destination</b><br />").openPopup();
 
-        
+
         var latlngs = Array();
 
         //Get latlng from first marker
@@ -85,6 +116,12 @@ function feedContractList() {
         //Get latlng from first marker
         latlngs.push(marker2.getLatLng());
         
+        latlngs.push(marker3.getLatLng());
+
+
+        latlngs.push(marker4.getLatLng());
+
+
         //You can just keep adding markers
         
         //From documentation http://leafletjs.com/reference.html#polyline
