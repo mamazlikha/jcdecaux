@@ -13,7 +13,7 @@ This project is composed of 4 sub-projects:
 
 The project contins also hosted service so that you don't need to make any furthur configurations. Just go to HostedServiceProxy\bin\Debug and execute HostedServiceProxy.exe in adminstrative mode. (Same for HostedServiceRoutingWithBikes).
 
-Once your both terminals are executed just open index.html file inside the light-client folder and the input your start and destination addresses and hit the "get path" button.
+Once your both terminals are executed just open index.html file inside the light-client folder and then input your start and destination addresses and hit the "get path" button.
 
 You should wait a little bit (like 15 seconde, yes it's very long Lol ^^) and enjoy the displayed map in leaflet ;)
 
