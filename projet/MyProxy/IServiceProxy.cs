@@ -11,8 +11,6 @@ namespace MyProxy
     [ServiceContract]
     public interface IServiceProxy
     {
-        [OperationContract]
-        string GetSomething();
 
         [OperationContract]
         string getInfoOfStaition(int id, string city);

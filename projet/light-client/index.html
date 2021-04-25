@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="main.js"></script>
+    <meta charset="UTF-8">
+    <!-- The title of the page is written in the tab of the browser. -->
+    <title>My first Web Services UI client</title>
+
+    <!-- Let's load the CSS file.
+    Note: we could also write the style directly in the html page, inside a <style> tag. -->
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+
+    <div id="step3" class="step">
+
+        <h2>Find the path to your goal : </h2>
+        <label for="addOfStart">address Of Start:</label>
+        <input name="addOfStart" id="addOfStart">
+
+        <label for="addOfDest">address Of Destination:</label>
+        <input name="addOfDest" id="addOfDest">
+        <button id="getClosestStation" onclick="getClosestStation();">Get closest station</button>
+
+
+    </div>
+
+    <div id="step4" class="step">
+        <h2>Closest station: <span id="closestStation"></span></h2>
+
+    </div>
+
+
+    <div id="mapid" style="width: 600px; height: 400px;"></div>
+   
+
+
+    <!-- Let's load the JS file.
+    Note: we could also write the javascript directly in the html page, inside a <script> tag. -->
+        <script>
+
+            
+            
+        </script>
+    
+</body>
+
+</html>

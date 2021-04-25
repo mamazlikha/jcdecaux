@@ -87,22 +87,22 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Engine.cs" />
-    <Compile Include="EngineForPath.cs" />
-    <Compile Include="Feature.cs" />
-    <Compile Include="FeatureForPath.cs" />
+    <Compile Include="open-route-service-for-path\EngineForPath.cs" />
+    <Compile Include="open-route-service-for-txt\Feature.cs" />
+    <Compile Include="open-route-service-for-path\FeatureForPath.cs" />
     <Compile Include="Geocoding.cs" />
     <Compile Include="Geometry.cs" />
-    <Compile Include="GerometryForPath.cs" />
+    <Compile Include="open-route-service-for-path\GerometryForPath.cs" />
     <Compile Include="IRoutingWithBikes.cs" />
     <Compile Include="Lang.cs" />
     <Compile Include="MainStands.cs" />
     <Compile Include="Metadata.cs" />
-    <Compile Include="OpenRouteServiceApiForPath.cs" />
-    <Compile Include="OpenRouteServiceObjForTxt.cs" />
+    <Compile Include="open-route-service-for-path\OpenRouteServiceApiForPath.cs" />
+    <Compile Include="open-route-service-for-txt\OpenRouteServiceObjForTxt.cs" />
     <Compile Include="ParsedText.cs" />
     <Compile Include="Position.cs" />
-    <Compile Include="Properties.cs" />
-    <Compile Include="PropertiesForPath.cs" />
+    <Compile Include="open-route-service-for-txt\Properties.cs" />
+    <Compile Include="open-route-service-for-path\PropertiesForPath.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Query.cs" />
     <Compile Include="QueryForPath.cs" />
@@ -111,7 +111,7 @@
     <Compile Include="SerialisedObject.cs" />
     <Compile Include="Station.cs" />
     <Compile Include="Step.cs" />
-    <Compile Include="Summary.cs" />
+    <Compile Include="open-route-service-for-path\Summary.cs" />
     <Compile Include="TotalStands.cs" />
   </ItemGroup>
   <ItemGroup>

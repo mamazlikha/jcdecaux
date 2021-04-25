@@ -10,23 +10,22 @@ namespace MyProxy
     // REMARQUE : vous pouvez utiliser la commande Renommer du menu Refactoriser pour changer le nom de classe "Service1" à la fois dans le code et le fichier de configuration.
     public class ServiceProxyImpl : IServiceProxy
     {
-        static ProxyCache<JCDecauxObj> cache = null;
+        private static ProxyCache<JCDecauxObj> cache = null;
+
+        private double FIFTEEN_MINUTES = 900.0;
+
+        private static string KEY = "c9c6ff3f25cb517f16421e2c4d191fe0a70ebbfe";
 
         public ServiceProxyImpl()
         {
             if (cache == null) cache = new ProxyCache<JCDecauxObj>();
         }
 
-        public string GetSomething()
-        {
-            return "toto";
-        }
-
         public string getInfoOfStaition(int id, string city)
         {
-            string uri = "https://api.jcdecaux.com/vls/v3/stations/"+id+"?contract="+city+"&apiKey=c9c6ff3f25cb517f16421e2c4d191fe0a70ebbfe";
+            string uri = "https://api.jcdecaux.com/vls/v3/stations/"+id+"?contract="+city+"&apiKey="+KEY;
 
-            return cache.Get(uri, 900.0).getjsonObj(); // saving for 15 mins
+            return cache.Get(uri, FIFTEEN_MINUTES).getjsonObj(); // saving for 15 mins
 
         }
 

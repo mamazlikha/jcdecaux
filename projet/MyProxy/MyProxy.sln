@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyProxy", "MyProxy.csproj", "{D349007A-FA3B-4200-9486-5ACC6270384D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SelfHosted", "..\SelfHosted\SelfHosted.csproj", "{46C9DEAA-4886-49A6-9BBC-A831D9325604}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HostedServiceProxy", "..\HostedServiceProxy\HostedServiceProxy.csproj", "{C614C3A9-8B12-4463-9354-805BBCC59641}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{D349007A-FA3B-4200-9486-5ACC6270384D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D349007A-FA3B-4200-9486-5ACC6270384D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D349007A-FA3B-4200-9486-5ACC6270384D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{46C9DEAA-4886-49A6-9BBC-A831D9325604}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{46C9DEAA-4886-49A6-9BBC-A831D9325604}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{46C9DEAA-4886-49A6-9BBC-A831D9325604}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{46C9DEAA-4886-49A6-9BBC-A831D9325604}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C614C3A9-8B12-4463-9354-805BBCC59641}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C614C3A9-8B12-4463-9354-805BBCC59641}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C614C3A9-8B12-4463-9354-805BBCC59641}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C614C3A9-8B12-4463-9354-805BBCC59641}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
