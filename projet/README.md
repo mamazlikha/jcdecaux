@@ -1,13 +1,13 @@
-## Let's go biking !
+# Let's go biking !
 
-# by Anas Francis
-# 25 april 2021
-# © All rights reserved
+## by Anas Francis
+## 25 april 2021
+## © All rights reserved
 
 This project is composed of 4 sub-projects:
-	1. MyProxy which is going to store in its cache for a certain amount of time the requests to the api JCDecaux.
-	2. RoutingWithBikes which is going to get all JCDecaux's stations and then use that list to compute the path from starting address to destination address
 
+	1. MyProxy which is going to store in its cache for a certain amount of time the requests to the api JCDecaux.
+	2. RoutingWithBikes which is going to get all JCDecaux's stations and then use that list to compute the path from starting address to destination address.
 	3. HeavyClient which is going to show some statistics.
 	4. light-client which is going to be used by users the input their start and en itinerary and display the result inside a leaflet map.
 
