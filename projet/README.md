@@ -17,7 +17,13 @@ Once your both terminals are executed just open index.html file inside the light
 
 You should wait a little bit (like 15 seconde, yes it's very long Lol ^^) and enjoy the displayed map in leaflet ;)
 
+To make a new research, you must refresh the page
+
 see the project on github : https://github.com/FRANCISAnas/eiin839/tree/benjaminvella-main/projet
 
+An example of input : 
+
+Address of start : 4 rue du sauveur 69007 lyon
+Address of destiniation : 28 Rue des Heros marseille
 
 

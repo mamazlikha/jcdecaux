@@ -82,7 +82,6 @@ namespace RoutingWithBikes
                 Station closestStationToAddressOfStart =
                 computeClosestStationToAddress(geoLocationOfAddressOfStart, stations, isAddOfStart);
 
-
                 Station closestStationToAddressOfDest =
                     computeClosestStationToAddress(geoLocationOfAddressOfDest, stations, !isAddOfStart);
                 if (closestStationToAddressOfDest != null && closestStationToAddressOfStart != null)

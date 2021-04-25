@@ -17,10 +17,11 @@ function feedContractList() {
             path3 = parsed_list.AllPath[2].Features;
         
         }
+        
         var postions = parsed_list.positions;
         var latlngs = Array();
 
-        var mymap = L.map('mapid').setView([48, 2], 7);
+        var mymap = L.map('mapid').setView([48, 3], 6);
        
         L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
             maxZoom: 18,

@@ -14,6 +14,7 @@ namespace RoutingWithBikes
     {
 
         [JsonPropertyName("number")]
+        [DataMember]
         public int Number { get; set; }
 
         [JsonPropertyName("contractName")]
