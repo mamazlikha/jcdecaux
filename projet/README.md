@@ -17,6 +17,9 @@ Once your both terminals are executed just open index.html file inside the light
 
 You should wait a little bit (like 15 seconde, yes it's very long Lol ^^) and enjoy the displayed map in leaflet ;)
 
+To test the REST API of Routing with bikes service, with postman, please excute the following link (assuming you've already stared the hosted services, as exolained previously) : 
+http://localhost:8733/Design_Time_Addresses/RoutingWithBikes/RESTBikeRoutingService/computeRoute?addressOfStart=4%20rue%20du%20sauveur%2069007%20lyon&addressOfDest=28%20Rue%20des%20Heros%20marseille
+
 To make a new research, you must refresh the page
 
 see the project on github : https://github.com/FRANCISAnas/eiin839/tree/benjaminvella-main/projet
