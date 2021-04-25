@@ -8,7 +8,7 @@ This project is composed of 4 sub-projects:
 
 	1. MyProxy which is going to store in its cache for a certain amount of time the requests to the api JCDecaux.
 	2. RoutingWithBikes which is going to get all JCDecaux's stations and then use that list to compute the path from starting address to destination address.
-	3. HeavyClient which is going to show some statistics.
+	3. HeavyClient which is going to do the sale thing as the light-client except there wont be a map, but it will print the instructions in the console.
 	4. light-client which is going to be used by users the input their start and en itinerary and display the result inside a leaflet map.
 
 The project contins also hosted service so that you don't need to make any furthur configurations. Just go to HostedServiceProxy\bin\Debug and execute HostedServiceProxy.exe in adminstrative mode. (Same for HostedServiceRoutingWithBikes).
