@@ -1,3 +1,5 @@
+Link to One drive : https://unice-my.sharepoint.com/:f:/g/personal/anas_francis_etu_unice_fr/Eo4R74fHDwFNkQESqcYnRIkBwnFrvvjZIDSj1zWJxbkXOA?e=tCVYkc
+
 # Let's go biking !
 
 ## by Anas Francis
@@ -19,7 +21,7 @@ You should wait a little bit (like 15 seconde, yes it's very long Lol ^^) and en
 
 To make a new research, you must refresh the page
 
-To test the REST API of Routing with bikes service, with postman (or inside the navigator), please excute the following link (assuming you've already stared the hosted services, as exolained previously) : 
+To test the REST API of Routing with bikes service, with postman (or inside the navigator), please copy/paste the following link in your browser (or postman, assuming you've already stared the hosted services, as exolained previously) : 
 http://localhost:8733/Design_Time_Addresses/RoutingWithBikes/RESTBikeRoutingService/computeRoute?addressOfStart=4%20rue%20du%20sauveur%2069007%20lyon&addressOfDest=28%20Rue%20des%20Heros%20marseille
 
 see the project on github : https://github.com/FRANCISAnas/eiin839/tree/benjaminvella-main/projet
@@ -34,3 +36,7 @@ If you want to open this project in visula studio 2019 IDE. You must launch visu
 You should do the same procedure to open MyProxy project.
 
 Finally, to open HeavyClient project, you don't need to open visual studio 2019 in adminstrative mode.
+
+
+!! BE AWARE !!
+If you entered a bad addresses the back end will throw an exception, there is no error handling.

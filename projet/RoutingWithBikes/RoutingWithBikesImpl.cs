@@ -19,12 +19,12 @@ namespace RoutingWithBikes
         protected string city;
 
         protected HttpClient ht = new HttpClient();
-        protected List<Station> stations = new List<Station>();
+        protected static List<Station> stations = null;
         private double LIMIT_CONST_DISTANCE = 1500; // 1,5 km. 
 
         public RoutingWithBikesImpl()
         {
-            this.stations = GetStations(null);
+            if(stations == null) stations = GetStations(null);
         }
         public RoutingWithBikesImpl(string city)
         {
