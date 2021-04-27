@@ -20,7 +20,7 @@ namespace RoutingWithBikes
 
         protected HttpClient ht = new HttpClient();
         protected static List<Station> stations = null;
-        private double LIMIT_CONST_DISTANCE = 1500; // 1,5 km. 
+        private static double LIMIT_CONST_DISTANCE = 1500; // 1,5 km.
 
         public RoutingWithBikesImpl()
         {
