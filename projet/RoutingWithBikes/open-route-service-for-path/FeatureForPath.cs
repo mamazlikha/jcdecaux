@@ -10,10 +10,7 @@ namespace RoutingWithBikes
 {
     public class FeatureForPath
     {
-        /*[JsonPropertyName("bbox")]
-        [DataMember]
-        public List<double> Bbox { get; set; }
-        */
+        
         [JsonPropertyName("type")]
         [DataMember]
         public string type { get; set; }

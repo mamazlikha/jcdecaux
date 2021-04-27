@@ -12,20 +12,7 @@ namespace RoutingWithBikes
     [ServiceContract]
     public interface IRoutingWithBikes
     {
-        [OperationContract]
-        [WebInvoke(Method = "GET",
-            ResponseFormat = WebMessageFormat.Json, 
-            BodyStyle = WebMessageBodyStyle.Bare,
-            UriTemplate = "GetStations?city={city}"),]
-        List<Station> GetStations(string city);
-
-        [OperationContract]
-        [WebInvoke(Method = "GET",
-            ResponseFormat = WebMessageFormat.Json,
-            BodyStyle = WebMessageBodyStyle.Bare,
-            UriTemplate = "station_info?city={city}&id={id}")]
-        Station GetInfoOnStation(string city, int id);
-
+       
         [OperationContract]
         [WebInvoke(Method = "GET",
             ResponseFormat = WebMessageFormat.Json,
