@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/RoutingWithBikes" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/RoutingWithBikes" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/RoutingWithBikes/RESTBikeRoutingService/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="ArrayOfStation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Station" nillable="true" type="tns:Station" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStation" nillable="true" type="tns:ArrayOfStation" />
+  <xs:complexType name="Station">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Banking" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Bonus" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Connected" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ContractName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastUpdate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="MainStands" nillable="true" type="tns:MainStands" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Overflow" type="xs:boolean" />
+      <xs:element minOccurs="0" name="OverflowStands" nillable="true" type="xs:anyType" />
+      <xs:element minOccurs="0" name="Position" nillable="true" type="tns:Position" />
+      <xs:element minOccurs="0" name="Shape" nillable="true" type="xs:anyType" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalStands" nillable="true" type="tns:TotalStands" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Station" nillable="true" type="tns:Station" />
+  <xs:complexType name="MainStands">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Availabilities" nillable="true" type="tns:Availabilities" />
+      <xs:element minOccurs="0" name="Capacity" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MainStands" nillable="true" type="tns:MainStands" />
+  <xs:complexType name="Availabilities">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Bikes" type="xs:int" />
+      <xs:element minOccurs="0" name="ElectricalBikes" type="xs:int" />
+      <xs:element minOccurs="0" name="ElectricalInternalBatteryBikes" type="xs:int" />
+      <xs:element minOccurs="0" name="ElectricalRemovableBatteryBikes" type="xs:int" />
+      <xs:element minOccurs="0" name="MechanicalBikes" type="xs:int" />
+      <xs:element minOccurs="0" name="Stands" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Availabilities" nillable="true" type="tns:Availabilities" />
+  <xs:complexType name="Position">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Lat" type="xs:double" />
+      <xs:element minOccurs="0" name="Lng" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Position" nillable="true" type="tns:Position" />
+  <xs:complexType name="TotalStands">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Availabilities" nillable="true" type="tns:Availabilities" />
+      <xs:element minOccurs="0" name="Capacity" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TotalStands" nillable="true" type="tns:TotalStands" />
+  <xs:complexType name="SerialisedObject">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AllPath" nillable="true" type="tns:ArrayOfOpenRouteServiceApiForPath" />
+      <xs:element minOccurs="0" name="positions" nillable="true" type="tns:ArrayOfPosition" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SerialisedObject" nillable="true" type="tns:SerialisedObject" />
+  <xs:complexType name="ArrayOfOpenRouteServiceApiForPath">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OpenRouteServiceApiForPath" nillable="true" type="tns:OpenRouteServiceApiForPath" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOpenRouteServiceApiForPath" nillable="true" type="tns:ArrayOfOpenRouteServiceApiForPath" />
+  <xs:complexType name="OpenRouteServiceApiForPath">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Bbox" nillable="true" type="q1:ArrayOfdouble" />
+      <xs:element minOccurs="0" name="Features" nillable="true" type="tns:ArrayOfFeatureForPath" />
+      <xs:element minOccurs="0" name="Metadata" nillable="true" type="tns:Metadata" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OpenRouteServiceApiForPath" nillable="true" type="tns:OpenRouteServiceApiForPath" />
+  <xs:complexType name="ArrayOfFeatureForPath">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FeatureForPath" nillable="true" type="tns:FeatureForPath" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFeatureForPath" nillable="true" type="tns:ArrayOfFeatureForPath" />
+  <xs:complexType name="FeatureForPath">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="geometry" nillable="true" type="tns:GeometryForPath" />
+      <xs:element minOccurs="0" name="properties" nillable="true" type="tns:PropertiesForPath" />
+      <xs:element minOccurs="0" name="type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FeatureForPath" nillable="true" type="tns:FeatureForPath" />
+  <xs:complexType name="GeometryForPath">
+    <xs:sequence>
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="coordinates" nillable="true" type="q2:ArrayOfArrayOfdouble" />
+      <xs:element minOccurs="0" name="type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GeometryForPath" nillable="true" type="tns:GeometryForPath" />
+  <xs:complexType name="PropertiesForPath">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Segments" nillable="true" type="tns:ArrayOfSegment" />
+      <xs:element minOccurs="0" name="Summary" nillable="true" type="tns:Summary" />
+      <xs:element xmlns:q3="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="WayPoints" nillable="true" type="q3:ArrayOfint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PropertiesForPath" nillable="true" type="tns:PropertiesForPath" />
+  <xs:complexType name="ArrayOfSegment">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Segment" nillable="true" type="tns:Segment" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSegment" nillable="true" type="tns:ArrayOfSegment" />
+  <xs:complexType name="Segment">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Distance" type="xs:double" />
+      <xs:element minOccurs="0" name="Duration" type="xs:double" />
+      <xs:element minOccurs="0" name="Steps" nillable="true" type="tns:ArrayOfStep" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Segment" nillable="true" type="tns:Segment" />
+  <xs:complexType name="ArrayOfStep">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Step" nillable="true" type="tns:Step" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStep" nillable="true" type="tns:ArrayOfStep" />
+  <xs:complexType name="Step">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Distance" type="xs:double" />
+      <xs:element minOccurs="0" name="Duration" type="xs:double" />
+      <xs:element minOccurs="0" name="Instruction" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" type="xs:int" />
+      <xs:element xmlns:q4="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="WayPoints" nillable="true" type="q4:ArrayOfint" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Step" nillable="true" type="tns:Step" />
+  <xs:complexType name="Summary">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Distance" type="xs:double" />
+      <xs:element minOccurs="0" name="Duration" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Summary" nillable="true" type="tns:Summary" />
+  <xs:complexType name="Metadata">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Attribution" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Engine" nillable="true" type="tns:EngineForPath" />
+      <xs:element minOccurs="0" name="Query" nillable="true" type="tns:QueryForPath" />
+      <xs:element minOccurs="0" name="Service" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Timestamp" type="xs:long" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Metadata" nillable="true" type="tns:Metadata" />
+  <xs:complexType name="EngineForPath">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BuildDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="GraphDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Version" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EngineForPath" nillable="true" type="tns:EngineForPath" />
+  <xs:complexType name="QueryForPath">
+    <xs:sequence>
+      <xs:element xmlns:q5="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Coordinates" nillable="true" type="q5:ArrayOfArrayOfdouble" />
+      <xs:element minOccurs="0" name="Format" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Profile" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="QueryForPath" nillable="true" type="tns:QueryForPath" />
+  <xs:complexType name="ArrayOfPosition">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Position" nillable="true" type="tns:Position" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPosition" nillable="true" type="tns:ArrayOfPosition" />
+</xs:schema>
